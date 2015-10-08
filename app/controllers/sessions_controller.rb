@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
     @user = User.new(user_params)
     @tempUser = User.find_by_user_id(@user.user_id)
     if @tempUser.present? && @tempUser.email==@user.email
-      #flash[:notice] = "You are logged in as #{@user.user_id}"
       session[:user_logged] = "You are logged in as #{@user.user_id}"
       session[:session_token] = @tempUser.session_token
       redirect_to movies_path
